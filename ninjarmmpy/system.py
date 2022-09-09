@@ -18,6 +18,7 @@ class SystemMixin():
     NINJA_API_TASKS                                     = '/v2/tasks'
     NINJA_API_LOCATIONS                                 = '/v2/locations'
     NINJA_API_ROLES                                     = '/v2/roles'
+    NINJA_API_CUSTOMFIELDS                              = '/v2/device-custom-fields'
 
     api_get_request = api_get_request
 
@@ -220,3 +221,8 @@ class SystemMixin():
         """
         params = {'lang': lang}
         return self.api_get_request(f'{self.NINJA_API_GROUPS}', params=params)
+
+    @return_response
+    def getCustomFields(self):
+            """Returns a list of custom fields"""
+            return self.api_get_request(self.NINJA_API_CUSTOMFIELDS)
